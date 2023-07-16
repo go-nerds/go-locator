@@ -27,11 +27,14 @@ func output(fileName string, record geoip2.City) {
 		fmt.Printf("Is Anonymous Proxy: %v\n", record.Traits.IsAnonymousProxy)
 		fmt.Printf("Is Satellite Provider: %v\n", record.Traits.IsSatelliteProvider)
 		fmt.Printf("Is In European Union: %v\n", record.Country.IsInEuropeanUnion)
+		fmt.Printf("========================================\n")
 	}
 }
 
 func writeToFile(filename string, record geoip2.City) error {
-	file, err := os.Create(filename)
+
+	file, err := os.OpenFile(filename,
+		os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 
 	if err != nil {
 		return errors.New("Error while creating the file!")
@@ -48,7 +51,8 @@ func writeToFile(filename string, record geoip2.City) error {
 			"Metro Code: " + fmt.Sprintf("%v", record.Location.MetroCode) + "\n" +
 			"Is Anonymous Proxy: " + fmt.Sprintf("%v", record.Traits.IsAnonymousProxy) + "\n" +
 			"Is Satellite Provider: " + fmt.Sprintf("%v", record.Traits.IsSatelliteProvider) + "\n" +
-			"Is In European Union: " + fmt.Sprintf("%v", record.Country.IsInEuropeanUnion) + "\n")
+			"Is In European Union: " + fmt.Sprintf("%v", record.Country.IsInEuropeanUnion) + "\n" +
+			"========================================\n")
 
 	if err2 != nil {
 		return errors.New("Error in writing into file")

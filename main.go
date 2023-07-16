@@ -9,7 +9,8 @@ import (
 )
 
 type UserInput struct {
-	Ip     string `arg:"--ip,required"`
+	Ip     string `arg:"--ip"`
+	File   string `arg:"-f"`
 	Output string `arg:"-o"`
 }
 
