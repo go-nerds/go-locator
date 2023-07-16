@@ -7,10 +7,9 @@ Go-locator is a Go package designed to get offline information about any IP addr
 ```bash
     Usage: go-locator.exe [--ip IP] [-f FILE] [--output -o OUTPUT]
 ```
-
- --ip: For single IP
- -f: For multiple IPs in a file
- -o: For saving in output file
+- --ip: For single IP
+- -f: For multiple IPs in a file
+- -o: For saving in output file
 
 ## Demo
 
