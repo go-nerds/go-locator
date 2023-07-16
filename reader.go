@@ -16,6 +16,10 @@ var fileLines []string
 
 func initReader(userInput UserInput) error {
 
+	if userInput.Ip == "" && userInput.File == "" {
+		return errors.New("Please choose an option!")
+	}
+
 	db, err := geoip2.Open("GeoLite2-City.mmdb")
 	if err != nil {
 		log.Fatal(err)
