@@ -6,6 +6,7 @@ import (
 
 	"github.com/alexflint/go-arg"
 	"github.com/gookit/color"
+	"github.com/pterm/pterm"
 )
 
 type UserInput struct {
@@ -15,6 +16,15 @@ type UserInput struct {
 }
 
 func main() {
+
+	info := color.FgLightCyan.Render
+
+	pterm.DefaultBox.
+		WithRightPadding(10).
+		WithLeftPadding(10).
+		WithTopPadding(2).
+		WithBottomPadding(2).
+		Println(info("Go locator created by AAVision"))
 
 	userInput := UserInput{}
 	arg.MustParse(&userInput)

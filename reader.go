@@ -17,7 +17,7 @@ var fileLines []string
 func initReader(userInput UserInput) error {
 
 	if userInput.Ip == "" && userInput.File == "" {
-		return errors.New("Please choose an option!")
+		return errors.New("please choose an option!")
 	}
 
 	db, err := geoip2.Open("GeoLite2-City.mmdb")
@@ -60,7 +60,7 @@ func readFile(userInput UserInput) error {
 	f, err := os.Open(file)
 
 	if err != nil {
-		return errors.New("Something went wrong while reading the given file!")
+		return errors.New("something went wrong while reading the given file!")
 	}
 
 	defer f.Close()
@@ -85,13 +85,13 @@ func readFromDb(db *geoip2.Reader, userInput UserInput) error {
 	status, trimedIp := validateIP(userInput.Ip)
 
 	if !status {
-		return errors.New("Invalid ip address!")
+		return errors.New("invalid ip address!")
 	}
 
 	ip := net.ParseIP(trimedIp)
 	record, err := db.City(ip)
 	if err != nil {
-		return errors.New("Something went wrong!")
+		return errors.New("something went wrong!")
 	}
 
 	output(userInput.Output, *record)
